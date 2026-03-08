@@ -1,6 +1,6 @@
 # ⚡ Shelby Quickstart — 1-Click Installer
 
-> A single command to get your community up and running with the Shelby CLI — no manual setup, no headaches.
+> A single command to get you up and running with the Shelby CLI — no manual setup, no headaches.
 
 Built by [.87🌵](https://x.com/ofalamin) · Community: [t.me/Labs87](https://t.me/Labs87) · Twitter/X: [@ofalamin](https://x.com/ofalamin)
 
@@ -11,7 +11,7 @@ Built by [.87🌵](https://x.com/ofalamin) · Community: [t.me/Labs87](https://t
 Paste this into your terminal and hit enter:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/shelby-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/1momoh/1-click-Shelby-CLI-installer/main/shelby-install.sh | bash
 ```
 
 > Replace `YOUR_USERNAME/YOUR_REPO` with your actual GitHub path before sharing.
