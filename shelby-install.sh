@@ -242,16 +242,20 @@ run_config() {
   echo -e "${PURPLE}${BOLD}║                  Setup Complete! 🎉                      ║${RESET}"
   echo -e "${PURPLE}${BOLD}╚══════════════════════════════════════════════════════════╝${RESET}"
   echo ""
-  echo -e "  ${GREEN}${BOLD}You're ready to go. Next steps:${RESET}"
+  echo -e "  ${GREEN}${BOLD}You're ready to go. Open a new terminal and follow these steps:${RESET}"
   echo ""
-  echo -e "  ${CYAN}1.${RESET}  ${BOLD}Configure your dev account:${RESET}"
+  echo -e "  ${CYAN}1.${RESET}  ${BOLD}Initialize the Shelby CLI:${RESET}"
+  echo -e "      ${DIM}shelby init${RESET}"
+  echo -e "      ${DIM}(must be run in a fresh terminal — not inside a script)${RESET}"
+  echo ""
+  echo -e "  ${CYAN}2.${RESET}  ${BOLD}Configure your dev account:${RESET}"
   echo -e "      ${DIM}cd ${CLONE_DIR} && ${PKG} run config${RESET}"
   echo ""
-  echo -e "  ${CYAN}2.${RESET}  ${BOLD}Fund your address:${RESET}"
+  echo -e "  ${CYAN}3.${RESET}  ${BOLD}Fund your Aptos wallet (NOT EVM — use Petra wallet):${RESET}"
   echo -e "      ${DIM}ShelbyUSD → https://docs.shelby.xyz/apis/faucet/shelbyusd${RESET}"
   echo -e "      ${DIM}Aptos     → https://docs.shelby.xyz/apis/faucet/aptos${RESET}"
   echo ""
-  echo -e "  ${CYAN}3.${RESET}  ${BOLD}Try the CLI commands:${RESET}"
+  echo -e "  ${CYAN}4.${RESET}  ${BOLD}Try the CLI commands:${RESET}"
   echo -e "      ${DIM}${PKG} run upload   — upload a blob to Shelby${RESET}"
   echo -e "      ${DIM}${PKG} run list     — list blobs for an account${RESET}"
   echo -e "      ${DIM}${PKG} run download — download a blob locally${RESET}"
@@ -261,22 +265,6 @@ run_config() {
   echo -e "  ${DIM}💬  Community: t.me/Labs87${RESET}"
   echo -e "  ${DIM}🐦  Updates:   x.com/ofalamin${RESET}"
   echo ""
-
-  if confirm "Run 'shelby init' now to initialize the Shelby CLI?"; then
-    echo ""
-    shelby init
-    ok "Shelby CLI initialized"
-  else
-    warn "Skipping — run 'shelby init' manually before using the quickstart"
-  fi
-
-  echo ""
-  if confirm "Launch 'npm run config' now to set up your dev account?"; then
-    echo ""
-    $PKG run config
-  else
-    info "Run '${PKG} run config' inside ./${CLONE_DIR} whenever you're ready."
-  fi
 }
 
 # ── Entry point ───────────────────────────────────────────────
