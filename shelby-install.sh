@@ -56,7 +56,7 @@ info() {
 
 confirm() {
   read -rp "$(echo -e "  ${YELLOW}?${RESET}  $1 [y/N]: ")" ans
-  [[ "${ans,,}" == "y" ]]
+  [[ "$(echo "$ans" | tr '[:upper:]' '[:lower:]')" == "y" ]]
 }
 
 # ── OS Detection ─────────────────────────────────────────────
