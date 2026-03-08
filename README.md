@@ -1,11 +1,3 @@
-# ⚡ Shelby Quickstart — 1-Click Installer
-
-> A single command to get you up and running with the Shelby CLI — no manual setup, no headaches.
-
-Built by [.87🌵](https://x.com/ofalamin) · Community: [t.me/Labs87](https://t.me/Labs87) · Twitter/X: [@ofalamin](https://x.com/ofalamin)
-
----
-
 ## 🚀 Quick Start
 
 Paste this into your terminal and hit enter:
@@ -103,16 +95,6 @@ npm run dev        # Watch mode for active development
 
 ---
 
-## 📁 Files
-
-```
-.
-├── shelby-install.sh   # 1-click installer script
-└── README.md           # This file
-```
-
----
-
 ## 🔗 Resources
 
 - 📖 Shelby Docs — https://docs.shelby.xyz/tools/cli
@@ -121,9 +103,7 @@ npm run dev        # Watch mode for active development
 
 ---
 
-## 💬 Community
-
-Built something cool with Shelby? Come share it.
+## 💬 My Community
 
 - Telegram: [t.me/Labs87](https://t.me/Labs87)
 - Twitter/X: [@ofalamin](https://x.com/ofalamin)
