@@ -55,7 +55,7 @@ info() {
 }
 
 confirm() {
-  read -rp "$(echo -e "  ${YELLOW}?${RESET}  $1 [y/N]: ")" ans
+  read -rp "$(echo -e "  ${YELLOW}?${RESET}  $1 [y/N]: ")" ans </dev/tty
   [[ "$(echo "$ans" | tr '[:upper:]' '[:lower:]')" == "y" ]]
 }
 
