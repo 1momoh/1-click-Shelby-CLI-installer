@@ -14,7 +14,6 @@ Paste this into your terminal and hit enter:
 curl -fsSL https://raw.githubusercontent.com/1momoh/1-click-Shelby-CLI-installer/main/shelby-install.sh | bash
 ```
 
-
 That's it. The script handles everything else.
 
 ---
@@ -27,10 +26,10 @@ The installer walks you through the full setup automatically:
 |------|-------------|
 | ✅ OS Check | Confirms you're on Linux or macOS |
 | ✅ Git | Verifies git is available |
-| ✅ Node.js v22+ | Checks version — installs via nvm if missing |
+| ✅ Node.js v22+ | Checks version — auto-installs via nvm if missing |
 | ✅ Package Manager | Detects pnpm (preferred) or npm |
-| ✅ Shelby CLI | Checks install, links to docs if missing |
-| ✅ Aptos CLI | Checks install, links to docs if missing |
+| ✅ Shelby CLI | Auto-installs via `npm install -g @shelby-protocol/cli` if missing |
+| ✅ Aptos CLI | Auto-installs via Homebrew (macOS) or Python script (Linux) if missing |
 | ✅ Clone & Build | Clones the quickstart repo and builds it |
 | ✅ Config Prompt | Optionally launches `npm run config` to set up your dev account |
 
@@ -40,14 +39,15 @@ The installer walks you through the full setup automatically:
 
 - **OS:** Linux or macOS
 - **Node.js:** v22 or later *(auto-installed via nvm if missing)*
-- **Shelby CLI** → [Install guide](https://docs.shelby.xyz/tools/cli)
-- **Aptos CLI** → [Install guide](https://aptos.dev/build/cli)
+- **python3:** required on Linux for Aptos CLI install *(usually pre-installed)*
+- **Shelby CLI** — auto-installed by the script, or manually: `npm install -g @shelby-protocol/cli`
+- **Aptos CLI** — auto-installed by the script, or manually: [Install guide](https://aptos.dev/build/cli)
 
 ---
 
 ## 🧪 After Installation
 
-Once the script completes, you'll be dropped into the interactive config. Here's what to do next:
+Once the script completes, you'll be inside the `shelby-quickstart` directory and ready to go.
 
 **1. Fund your dev address**
 - ShelbyUSD Faucet → https://docs.shelby.xyz/apis/faucet/shelbyusd
@@ -67,6 +67,15 @@ npm run dev        # Watch mode for active development
 
 ---
 
+## 📁 Files
+
+```
+.
+├── shelby-install.sh   # 1-click installer script
+└── README.md           # This file
+```
+
+---
 
 ## 🔗 Resources
 
