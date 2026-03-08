@@ -14,7 +14,6 @@ Paste this into your terminal and hit enter:
 curl -fsSL https://raw.githubusercontent.com/1momoh/1-click-Shelby-CLI-installer/main/shelby-install.sh | bash
 ```
 
-> Replace `YOUR_USERNAME/YOUR_REPO` with your actual GitHub path before sharing.
 
 That's it. The script handles everything else.
 
@@ -68,15 +67,6 @@ npm run dev        # Watch mode for active development
 
 ---
 
-## 📁 Files
-
-```
-.
-├── shelby-install.sh   # 1-click installer script
-└── README.md           # This file
-```
-
----
 
 ## 🔗 Resources
 
