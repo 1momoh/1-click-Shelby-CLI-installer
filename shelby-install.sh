@@ -262,7 +262,16 @@ run_config() {
   echo -e "  ${DIM}🐦  Updates:   x.com/ofalamin${RESET}"
   echo ""
 
-  if confirm "Launch 'npm run config' now to set up your account?"; then
+  if confirm "Run 'shelby init' now to initialize the Shelby CLI?"; then
+    echo ""
+    shelby init
+    ok "Shelby CLI initialized"
+  else
+    warn "Skipping — run 'shelby init' manually before using the quickstart"
+  fi
+
+  echo ""
+  if confirm "Launch 'npm run config' now to set up your dev account?"; then
     echo ""
     $PKG run config
   else
