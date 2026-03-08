@@ -9,6 +9,7 @@ curl -fsSL https://raw.githubusercontent.com/1momoh/1-click-Shelby-CLI-installer
 That's it. The script handles everything else.
 
 > 💡 **Tip:** The script will ask you a few questions during setup — select **`y`** (yes) for everything to get the full automatic installation.
+<img width="522" height="387" alt="image" src="https://github.com/user-attachments/assets/9c91cbb8-1ee7-4ec3-ac98-93fcf68063da" />
 
 ---
 
