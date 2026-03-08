@@ -129,37 +129,64 @@ check_pkg_manager() {
 }
 
 # ── Dependency: Shelby CLI ────────────────────────────────────
+install_shelby_cli() {
+  info "Installing Shelby CLI via npm…"
+  npm install -g @shelby-protocol/cli
+  if command -v shelby &>/dev/null; then
+    ok "Shelby CLI installed: $(shelby --version 2>/dev/null || echo 'installed')"
+  else
+    warn "Shelby CLI installed — restart your terminal if 'shelby' is not found in PATH"
+  fi
+}
+
 check_shelby_cli() {
   if command -v shelby &>/dev/null; then
     ok "Shelby CLI found: $(shelby --version 2>/dev/null || echo 'installed')"
   else
     warn "Shelby CLI not found."
-    echo ""
-    echo -e "  ${YELLOW}${BOLD}Install the Shelby CLI first:${RESET}"
-    echo -e "  ${DIM}https://docs.shelby.xyz/tools/cli${RESET}"
-    echo ""
-    if confirm "Continue anyway? (you can install CLI after cloning)"; then
-      warn "Continuing without Shelby CLI — install it before running npm run config"
+    if confirm "Install Shelby CLI now? (npm install -g @shelby-protocol/cli)"; then
+      install_shelby_cli
     else
-      fail "Please install the Shelby CLI first: https://docs.shelby.xyz/tools/cli"
+      warn "Skipping — install manually later: npm install -g @shelby-protocol/cli"
     fi
   fi
 }
 
 # ── Dependency: Aptos CLI ─────────────────────────────────────
+install_aptos_cli() {
+  if [[ "$PLATFORM" == "macos" ]]; then
+    if command -v brew &>/dev/null; then
+      info "Installing Aptos CLI via Homebrew…"
+      brew install aptos
+    else
+      info "Homebrew not found. Installing via Python script…"
+      curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
+    fi
+  elif [[ "$PLATFORM" == "linux" ]]; then
+    if ! command -v python3 &>/dev/null; then
+      fail "python3 is required to install the Aptos CLI. Please install python3 and re-run."
+    fi
+    info "Installing Aptos CLI via Python script…"
+    curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
+  fi
+
+  if command -v aptos &>/dev/null; then
+    ok "Aptos CLI installed: $(aptos --version 2>/dev/null | head -1 || echo 'installed')"
+  else
+    warn "Aptos CLI installed — you may need to restart your terminal or add it to your PATH"
+    info "Manual install guide: https://aptos.dev/build/cli"
+  fi
+}
+
 check_aptos_cli() {
   if command -v aptos &>/dev/null; then
     ok "Aptos CLI found: $(aptos --version 2>/dev/null | head -1 || echo 'installed')"
   else
     warn "Aptos CLI not found."
-    echo ""
-    echo -e "  ${YELLOW}${BOLD}Install the Aptos CLI first:${RESET}"
-    echo -e "  ${DIM}https://aptos.dev/build/cli${RESET}"
-    echo ""
-    if confirm "Continue anyway? (you can install Aptos CLI after cloning)"; then
-      warn "Continuing without Aptos CLI — install it before running npm run config"
+    if confirm "Install Aptos CLI now?"; then
+      install_aptos_cli
     else
-      fail "Please install the Aptos CLI first: https://aptos.dev/build/cli"
+      warn "Skipping — install manually later: https://aptos.dev/build/cli"
     fi
   fi
 }
@@ -199,7 +226,7 @@ build_project() {
   ok "Build complete"
 }
 
-# ── Run config ────────────────────────────────────────────────
+# ── Completion summary ────────────────────────────────────────
 run_config() {
   echo ""
   echo -e "${PURPLE}${BOLD}╔══════════════════════════════════════════════════════════╗${RESET}"
@@ -221,9 +248,9 @@ run_config() {
   echo -e "      ${DIM}${PKG} run download — download a blob locally${RESET}"
   echo -e "      ${DIM}${PKG} run dev      — watch mode for development${RESET}"
   echo ""
-  echo -e "  ${DIM}📖  Docs:     https://docs.shelby.xyz/tools/cli${RESET}"
+  echo -e "  ${DIM}📖  Docs:      https://docs.shelby.xyz/tools/cli${RESET}"
   echo -e "  ${DIM}💬  Community: t.me/Labs87${RESET}"
-  echo -e "  ${DIM}🐦  Updates:  x.com/ofalamin${RESET}"
+  echo -e "  ${DIM}🐦  Updates:   x.com/ofalamin${RESET}"
   echo ""
 
   if confirm "Launch 'npm run config' now to set up your account?"; then
