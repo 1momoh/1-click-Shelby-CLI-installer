@@ -88,13 +88,22 @@ check_node() {
 
   NODE_VER=$(node -e "process.stdout.write(process.version.slice(1))")
   NODE_MAJOR=$(echo "$NODE_VER" | cut -d. -f1)
+  NODE_MINOR=$(echo "$NODE_VER" | cut -d. -f2)
 
-  if [[ "$NODE_MAJOR" -lt 22 ]]; then
-    warn "Node.js v${NODE_VER} detected — v22+ is required."
-    if confirm "Install Node v22 via nvm?"; then
+  # vite@7+ requires Node >=22.12.0
+  NODE_OK=false
+  if [[ "$NODE_MAJOR" -gt 22 ]]; then
+    NODE_OK=true
+  elif [[ "$NODE_MAJOR" -eq 22 && "$NODE_MINOR" -ge 12 ]]; then
+    NODE_OK=true
+  fi
+
+  if [[ "$NODE_OK" == "false" ]]; then
+    warn "Node.js v${NODE_VER} detected — v22.12.0+ is required (vite@7 constraint)."
+    if confirm "Upgrade to Node v22 LTS (22.12+) via nvm?"; then
       install_node
     else
-      fail "Please upgrade Node.js to v22+ and re-run."
+      fail "Please upgrade Node.js to v22.12.0+ and re-run."
     fi
   else
     ok "Node.js v${NODE_VER} found"
@@ -109,9 +118,9 @@ install_node() {
   # shellcheck source=/dev/null
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-  nvm install 22
-  nvm use 22
-  nvm alias default 22
+  nvm install 22.12
+  nvm use 22.12
+  nvm alias default 22.12
   ok "Node.js v22 installed via nvm"
 }
 
