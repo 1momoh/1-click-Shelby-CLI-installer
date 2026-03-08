@@ -49,26 +49,52 @@ The installer walks you through the full setup automatically:
 
 ## 🧪 After Installation
 
-Once the script completes, you'll be inside the `shelby-quickstart` directory and ready to go.
+Once the script finishes, **open a fresh terminal window** and follow these steps in order:
 
-**1. Set up & fund your Aptos wallet**
+---
 
-> ⚠️ **This is NOT an EVM chain.** You need an **Aptos wallet** — not MetaMask or any EVM wallet.
+**Step 1 — Initialize the Shelby CLI**
 
-We recommend **Petra**, the official Aptos wallet extension:
+> ⚠️ This must be run in a **new terminal window** — it won't work inside the installer script.
 
-👉 [Install Petra Aptos Wallet (Chrome)](https://chromewebstore.google.com/detail/petra-aptos-wallet/ejjladinnckdgjemekebdpeokbikhfci?hl=en-US&utm_source=ext_sidebar)
+```bash
+shelby init
+```
 
-Once installed, fund your dev address using the testnet faucets:
-- ShelbyUSD Faucet → https://docs.shelby.xyz/apis/faucet/shelbyusd
-- Aptos Faucet → https://docs.shelby.xyz/apis/faucet/aptos
+This creates your Shelby config file at `~/.shelby/config.yaml`. Follow the prompts — you can accept the defaults.
 
-**2. Try the CLI commands**
+---
+
+**Step 2 — Configure your dev account**
 
 ```bash
 cd shelby-quickstart
+npm run config
+```
 
-npm run config     # Set up your dev account + .env
+---
+
+**Step 3 — Set up your Aptos wallet**
+
+> ⚠️ **This is NOT an EVM chain.** Do NOT use MetaMask or any EVM wallet.
+
+You need an **Aptos wallet**. We recommend **Petra** — the official Aptos wallet extension:
+
+👉 [Install Petra Aptos Wallet (Chrome)](https://chromewebstore.google.com/detail/petra-aptos-wallet/ejjladinnckdgjemekebdpeokbikhfci?hl=en-US&utm_source=ext_sidebar)
+
+---
+
+**Step 4 — Fund your dev address**
+
+Once your wallet is set up, grab testnet tokens from the faucets:
+- ShelbyUSD Faucet → https://docs.shelby.xyz/apis/faucet/shelbyusd
+- Aptos Faucet → https://docs.shelby.xyz/apis/faucet/aptos
+
+---
+
+**Step 5 — Try the CLI commands**
+
+```bash
 npm run upload     # Upload a blob to Shelby
 npm run list       # List blobs for an account
 npm run download   # Download a blob to local filesystem
