@@ -51,7 +51,15 @@ The installer walks you through the full setup automatically:
 
 Once the script completes, you'll be inside the `shelby-quickstart` directory and ready to go.
 
-**1. Fund your dev address**
+**1. Set up & fund your Aptos wallet**
+
+> ⚠️ **This is NOT an EVM chain.** You need an **Aptos wallet** — not MetaMask or any EVM wallet.
+
+We recommend **Petra**, the official Aptos wallet extension:
+
+👉 [Install Petra Aptos Wallet (Chrome)](https://chromewebstore.google.com/detail/petra-aptos-wallet/ejjladinnckdgjemekebdpeokbikhfci?hl=en-US&utm_source=ext_sidebar)
+
+Once installed, fund your dev address using the testnet faucets:
 - ShelbyUSD Faucet → https://docs.shelby.xyz/apis/faucet/shelbyusd
 - Aptos Faucet → https://docs.shelby.xyz/apis/faucet/aptos
 
